@@ -1,0 +1,2 @@
+# Bonefish-Traits
+Abstract traits
