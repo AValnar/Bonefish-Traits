@@ -28,12 +28,12 @@ trait Parametrized
     /**
      * @var array
      */
-    protected $parameters = array();
+    protected $parameters = [];
 
     /**
      * @param array $parameters
      */
-    public function setParameters(array $parameters = array())
+    public function setParameters(array $parameters = [])
     {
         $this->parameters = $parameters;
     }
