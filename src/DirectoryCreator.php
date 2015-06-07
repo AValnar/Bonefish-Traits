@@ -31,7 +31,7 @@ trait DirectoryCreator
     protected function createDir($path)
     {
         if (!file_exists($path)) {
-            mkdir($path);
+            mkdir($path, 0775, true);
         }
     }
 } 
