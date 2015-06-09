@@ -21,15 +21,9 @@
 
 namespace Bonefish\Traits;
 
-use Doctrine\Common\Cache\Cache;
 
-trait DoctrineCacheTrait
+trait CacheHelperTrait
 {
-
-    /**
-     * @var Cache
-     */
-    protected $cache = null;
 
     /**
      * @var string
@@ -55,31 +49,12 @@ trait DoctrineCacheTrait
     }
 
     /**
-     * @return Cache
-     */
-    public function getCache()
-    {
-        return $this->cache;
-    }
-
-    /**
-     * @param Cache $cache
-     * @return self
-     */
-    public function setCache($cache)
-    {
-        $this->cache = $cache;
-        return $this;
-    }
-
-
-    /**
      * @param string $identifier
      * @return string
      */
     protected function getCacheKey($identifier)
     {
-        return $this->cachePrefix . '.' . str_replace('\\', '.', $identifier);
+        return sha1($this->cachePrefix . $identifier);
     }
 
 }
