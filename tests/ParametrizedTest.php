@@ -1,9 +1,6 @@
 <?php
-
-namespace Bonefish\Traits;
-
 /**
- * Copyright (C) 2014  Alexander Schmidt
+ * Copyright (C) 2015  Alexander Schmidt
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,21 +16,33 @@ namespace Bonefish\Traits;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * @author     Alexander Schmidt <mail@story75.com>
  * @copyright  Copyright (c) 2015, Alexander Schmidt
- * @version    1.0
- * @date       2015-01-28
- * @package Bonefish\Traits
+ * @date       17.06.2015
  */
-trait DirectoryCreator
+
+namespace Bonefish\Tests\Traits;
+
+
+use Bonefish\Traits\Parametrized;
+
+class ParametrizedTest extends \PHPUnit_Framework_TestCase
 {
+
     /**
-     * @param string $path
-     * @param int $mode
-     * @param bool $recursive
+     * @var Parametrized
      */
-    protected function createDirectory($path, $mode = 0775, $recursive = true)
+    private $sut;
+
+    public function setUp()
     {
-        if (!file_exists($path)) {
-            mkdir($path, $mode, $recursive);
-        }
+        $this->sut = $this->getMockForTrait(Parametrized::class);
     }
-} 
+
+    public function testParameterGetterAndSetter()
+    {
+        $parameters = ['foo', 'bar'];
+
+        $this->sut->setParameters($parameters);
+
+        $this->assertEquals($parameters, $this->sut->getParameters());
+    }
+}
