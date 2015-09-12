@@ -52,7 +52,7 @@ trait CacheHelperTrait
      * @param string $identifier
      * @return string
      */
-    protected function getCacheKey($identifier)
+    public function getCacheKey($identifier)
     {
         return sha1($this->cachePrefix . $identifier);
     }
